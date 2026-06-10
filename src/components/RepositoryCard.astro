@@ -1,0 +1,33 @@
+---
+import type { Project } from '../data/portfolio';
+import StatusTag from './StatusTag.astro';
+interface Props { project: Project; index: number; }
+const { project, index } = Astro.props;
+const link = project.links[0];
+---
+
+<article>
+	<a href={link.href} target="_blank" rel="noreferrer">
+		<div class="topline"><span class="index">{String(index + 1).padStart(2, '0')}</span><StatusTag status={project.status} /></div>
+		<div class="title-row"><h3>{project.title}</h3><span class="arrow" aria-hidden="true">↗</span></div>
+		<p class="summary">{project.summary}</p>
+		<p class="detail">{project.detail}</p>
+		<ul aria-label={`${project.title} technologies`}>{project.stack.map((item) => <li>{item}</li>)}</ul>
+	</a>
+</article>
+
+<style>
+	article { border-top:1px solid var(--line); }
+	a { color:inherit; display:block; padding:2rem 0 2.4rem; text-decoration:none; }
+	.topline,.title-row { align-items:center; display:flex; justify-content:space-between; }
+	.index { color:var(--muted); font-family:var(--serif); font-size:.82rem; font-style:italic; }
+	.title-row { gap:1.5rem; margin:2rem 0 1.2rem; }
+	h3 { font-family:var(--serif); font-size:clamp(2rem,4vw,3.5rem); font-weight:500; letter-spacing:-.055em; line-height:.95; margin:0; transition:transform 180ms ease; }
+	.arrow { font-size:1.2rem; transition:transform 180ms ease; }
+	a:hover h3,a:focus-visible h3 { transform:translateX(.3rem); }
+	a:hover .arrow,a:focus-visible .arrow { transform:translate(.2rem,-.2rem); }
+	.summary { font-size:.95rem; font-weight:600; line-height:1.55; margin:0 0 .7rem; }
+	.detail { color:var(--muted); font-size:.8rem; line-height:1.65; margin:0 0 1.5rem; max-width:48rem; }
+	ul { display:flex; flex-wrap:wrap; gap:.9rem; list-style:none; margin:0; padding:0; }
+	li { color:var(--muted); font-size:.65rem; letter-spacing:.04em; }
+</style>

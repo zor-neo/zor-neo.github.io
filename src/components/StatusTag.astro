@@ -1,0 +1,27 @@
+---
+interface Props {
+	status: string;
+}
+
+const { status } = Astro.props;
+---
+
+<span class="status"><span aria-hidden="true"></span>{status}</span>
+
+<style>
+	.status {
+		align-items: center;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		color: var(--muted);
+		display: inline-flex;
+		font-size: 0.67rem;
+		font-weight: 700;
+		gap: 0.45rem;
+		letter-spacing: 0.12em;
+		padding: 0.46rem 0.68rem;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+	.status span { background: var(--signal); border-radius: 50%; height: 0.38rem; width: 0.38rem; }
+</style>

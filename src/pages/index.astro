@@ -1,0 +1,128 @@
+---
+import ArrowLink from '../components/ArrowLink.astro';
+import FeaturedProject from '../components/FeaturedProject.astro';
+import RepositoryCard from '../components/RepositoryCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { capabilities, coreStack, featuredProjects, repositoryProjects } from '../data/portfolio';
+const title = 'Zorneo — Product-focused full-stack developer';
+const description = 'Zorneo builds practical, reliable software products across full-stack web development, applied AI, and cloud.';
+---
+
+<BaseLayout title={title} description={description}>
+	<header class="site-header container">
+		<a class="wordmark" href="#top" aria-label="Zorneo home">Zorneo<span>.</span></a>
+		<nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#contact">Contact</a></nav>
+		<a class="availability" href="mailto:zorthiha.neo@gmail.com"><span></span>Open to remote roles</a>
+	</header>
+	<main id="main">
+		<section class="hero container" id="top">
+			<div class="hero-kicker"><p>Product-focused<br />full-stack developer</p><p>Based in UTC+7<br />Working worldwide</p></div>
+			<h1>From idea to<br /><em>reliable</em> software.</h1>
+			<div class="hero-bottom">
+				<p>I build practical digital products around real-world problems, with attention to how they work, how they feel, and how they hold up.</p>
+				<div class="hero-links"><ArrowLink href="#work" label="Explore selected work" /><ArrowLink href="https://github.com/zor-neo" label="GitHub profile" /></div>
+			</div>
+		</section>
+		<section class="selected-work container" id="work">
+			<h2 class="sr-only">Selected live work</h2>
+			<div class="section-heading"><p class="section-label">Selected live work</p><p>Products in the world, available to explore.</p></div>
+			<div>{featuredProjects.map((project,index) => <FeaturedProject project={project} index={index} />)}</div>
+		</section>
+		<section class="repository-work">
+			<div class="container">
+				<div class="section-heading repository-heading">
+					<div><p class="section-label">Repository work</p><h2>Useful experiments,<br /><em>openly documented.</em></h2></div>
+					<p>A broader record of product thinking, prototypes, developer tools, AI experiments, and data work.</p>
+				</div>
+				<div class="repository-list">{repositoryProjects.map((project,index) => <RepositoryCard project={project} index={index} />)}</div>
+			</div>
+		</section>
+		<section class="capabilities container" id="capabilities">
+			<div class="section-heading capabilities-heading">
+				<div><p class="section-label">Capabilities</p><h2>Engineering with<br /><em>practical intent.</em></h2></div>
+				<p>My work sits where product judgment meets implementation: defining the useful thing, then making it real and dependable.</p>
+			</div>
+			<div class="capability-grid">{capabilities.map((capability) => <article><span>{capability.number}</span><h3>{capability.title}</h3><p>{capability.text}</p></article>)}</div>
+			<div class="stack"><p>Working stack</p><ul aria-label="Working technology stack">{coreStack.map((item,index) => <li class:list={{secondary:index===coreStack.length-1}}>{item}</li>)}</ul></div>
+		</section>
+		<section class="credentials">
+			<div class="container">
+				<div class="credentials-intro"><p class="section-label">Cloud credentials</p><h2>Building a stronger<br /><em>systems view.</em></h2></div>
+				<div class="credential-list">
+					<a href="https://www.credly.com/badges/9a7bc559-d83a-4d20-af21-f6e35f699a57/public_url" target="_blank" rel="noreferrer"><span class="credential-status">Certified · AWS</span><strong>AWS Certified Cloud Practitioner</strong><span class="credential-arrow" aria-hidden="true">↗</span></a>
+					<div><span class="credential-status">Currently preparing · AWS</span><strong>Solutions Architect — Associate</strong><span class="study-mark">In progress</span></div>
+					<div><span class="credential-status">Currently studying</span><strong>Diploma in Computer Science</strong><span class="study-mark">Completing soon</span></div>
+				</div>
+			</div>
+		</section>
+		<section class="contact container" id="contact">
+			<p class="section-label">Contact</p><h2>Have a useful problem?<br /><em>Let’s talk.</em></h2>
+			<p class="contact-copy">I’m open to remote full-stack opportunities and conversations about practical software, AI-assisted products, and the systems behind them.</p>
+			<div class="contact-links"><a href="mailto:zorthiha.neo@gmail.com">zorthiha.neo@gmail.com <span aria-hidden="true">↗</span></a><a href="https://github.com/zor-neo" target="_blank" rel="noreferrer">github.com/zor-neo <span aria-hidden="true">↗</span></a></div>
+		</section>
+	</main>
+	<footer class="container"><a class="wordmark" href="#top">Zorneo<span>.</span></a><p>Product-focused full-stack developer · UTC+7</p><p>Designed and built with intent.</p></footer>
+</BaseLayout>
+
+<style>
+	.site-header { align-items:center; border-bottom:1px solid var(--line); display:grid; grid-template-columns:1fr auto 1fr; min-height:5.4rem; }
+	.wordmark { color:var(--ink); font-family:var(--serif); font-size:1.45rem; font-weight:500; letter-spacing:-.04em; text-decoration:none; width:fit-content; }
+	.wordmark span,h1 em,h2 em { color:var(--signal); }
+	nav { display:flex; gap:clamp(1rem,3vw,2.7rem); }
+	nav a,.availability { color:var(--muted); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-decoration:none; text-transform:uppercase; }
+	nav a { transition:color 180ms ease; } nav a:hover { color:var(--ink); }
+	.availability { align-items:center; display:flex; gap:.5rem; justify-self:end; }
+	.availability span { background:var(--signal); border-radius:50%; box-shadow:0 0 0 4px rgba(162,76,49,.1); height:.42rem; width:.42rem; }
+	.hero { display:grid; min-height:calc(100svh - 5.4rem); padding-bottom:clamp(3rem,8vh,7rem); padding-top:clamp(3rem,8vh,7rem); }
+	.hero-kicker,.hero-bottom { display:grid; grid-template-columns:1fr 1fr; }
+	.hero-kicker { align-self:start; }
+	.hero-kicker p { color:var(--muted); font-size:.64rem; font-weight:700; letter-spacing:.12em; line-height:1.7; margin:0; text-transform:uppercase; }
+	.hero-kicker p:last-child { justify-self:end; text-align:right; }
+	h1 { align-self:center; font-family:var(--serif); font-size:clamp(4rem,11vw,10rem); font-weight:500; letter-spacing:-.075em; line-height:.78; margin:2rem 0; max-width:10ch; }
+	h1 em,h2 em { font-weight:400; }
+	.hero-bottom { align-items:end; align-self:end; }
+	.hero-bottom>p { font-family:var(--serif); font-size:clamp(1.12rem,2vw,1.45rem); letter-spacing:-.025em; line-height:1.42; margin:0; max-width:28rem; }
+	.hero-links { display:flex; gap:1.7rem; justify-self:end; }
+	.selected-work { border-top:1px solid var(--line); padding-top:clamp(3rem,7vw,6rem); }
+	.section-heading { align-items:start; display:grid; gap:2rem; grid-template-columns:1fr 1fr; }
+	.section-heading>p { color:var(--muted); font-family:var(--serif); font-size:1rem; font-style:italic; justify-self:end; margin:0; max-width:19rem; }
+	.repository-work,.credentials { background:var(--ink); color:var(--paper); padding:clamp(5rem,10vw,9rem) 0; }
+	.repository-heading,.capabilities-heading { align-items:end; border-bottom:1px solid rgba(242,238,229,.17); padding-bottom:clamp(3rem,6vw,5rem); }
+	.repository-heading .section-label,.credentials .section-label { color:rgba(242,238,229,.62); }
+	h2 { font-family:var(--serif); font-size:clamp(3.4rem,7.5vw,7.5rem); font-weight:500; letter-spacing:-.07em; line-height:.83; margin:2.5rem 0 0; }
+	.repository-heading>p,.capabilities-heading>p { color:rgba(242,238,229,.56); font-family:var(--sans); font-size:.83rem; font-style:normal; line-height:1.7; }
+	.repository-work h2 em,.credentials h2 em { color:#c96f50; }
+	.repository-list :global(article) { border-color:rgba(242,238,229,.17); }
+	.repository-list :global(.status) { border-color:rgba(242,238,229,.2); color:rgba(242,238,229,.55); }
+	.repository-list :global(.index),.repository-list :global(.detail),.repository-list :global(li) { color:rgba(242,238,229,.5); }
+	.capabilities { padding-bottom:clamp(5rem,10vw,9rem); padding-top:clamp(5rem,10vw,9rem); }
+	.capabilities-heading { border-color:var(--line); }
+	.capabilities-heading>p { color:var(--muted); }
+	.capability-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+	.capability-grid article { border-right:1px solid var(--line); padding:2.6rem 1.7rem 3rem 0; }
+	.capability-grid article+article { padding-left:1.7rem; } .capability-grid article:last-child { border-right:0; padding-right:0; }
+	.capability-grid span { color:var(--signal); font-family:var(--serif); font-size:.78rem; font-style:italic; }
+	.capability-grid h3 { font-family:var(--serif); font-size:1.5rem; font-weight:500; letter-spacing:-.035em; line-height:1.05; margin:2.3rem 0 1.1rem; }
+	.capability-grid p { color:var(--muted); font-size:.74rem; line-height:1.7; margin:0; }
+	.stack { border-top:1px solid var(--line); display:grid; gap:2rem; grid-template-columns:1fr 3fr; padding-top:2rem; }
+	.stack p { color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.12em; margin:0; text-transform:uppercase; }
+	.stack ul { display:flex; flex-wrap:wrap; gap:.55rem; list-style:none; margin:0; padding:0; }
+	.stack li { border:1px solid var(--line); border-radius:999px; font-size:.7rem; padding:.45rem .7rem; } .stack li.secondary { color:var(--muted); }
+	.credentials .container { display:grid; gap:clamp(3rem,7vw,7rem); grid-template-columns:.8fr 1.2fr; }
+	.credentials h2 { font-size:clamp(3rem,6vw,6rem); }
+	.credential-list { border-top:1px solid rgba(242,238,229,.17); }
+	.credential-list>* { align-items:center; border-bottom:1px solid rgba(242,238,229,.17); color:inherit; display:grid; gap:1.5rem; grid-template-columns:1fr 1.6fr auto; padding:2rem 0; text-decoration:none; }
+	.credential-status,.study-mark { color:rgba(242,238,229,.5); font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; }
+	.credential-list strong { font-family:var(--serif); font-size:1.35rem; font-weight:500; letter-spacing:-.025em; }
+	.credential-arrow { transition:transform 180ms ease; } .credential-list a:hover .credential-arrow,.credential-list a:focus-visible .credential-arrow { transform:translate(.2rem,-.2rem); }
+	.contact { padding-bottom:clamp(5rem,10vw,10rem); padding-top:clamp(5rem,10vw,10rem); }
+	.contact h2 { font-size:clamp(4rem,9vw,9rem); }
+	.contact-copy { color:var(--muted); font-size:.87rem; line-height:1.7; margin:3rem 0; max-width:32rem; }
+	.contact-links { border-top:1px solid var(--line); }
+	.contact-links a { align-items:center; border-bottom:1px solid var(--line); color:var(--ink); display:flex; font-family:var(--serif); font-size:clamp(1.3rem,3vw,2.7rem); justify-content:space-between; letter-spacing:-.035em; padding:1.3rem 0; text-decoration:none; }
+	.contact-links span { font-family:var(--sans); font-size:1rem; transition:transform 180ms ease; } .contact-links a:hover span,.contact-links a:focus-visible span { transform:translate(.2rem,-.2rem); }
+	footer { align-items:center; border-top:1px solid var(--line); color:var(--muted); display:grid; font-size:.62rem; grid-template-columns:1fr auto 1fr; letter-spacing:.06em; min-height:6rem; }
+	footer p:last-child { justify-self:end; }
+	@media (max-width:850px) { .site-header { grid-template-columns:1fr auto; } nav { display:none; } .hero { min-height:43rem; } .section-heading,.credentials .container { grid-template-columns:1fr; } .section-heading>p { justify-self:start; } .capability-grid { grid-template-columns:repeat(2,1fr); } .capability-grid article:nth-child(2) { border-right:0; } .capability-grid article:nth-child(3),.capability-grid article:nth-child(4) { border-top:1px solid var(--line); } footer { gap:.6rem; grid-template-columns:1fr auto; padding-bottom:1.5rem; padding-top:1.5rem; } footer p:first-of-type { display:none; } }
+	@media (max-width:590px) { .availability { font-size:0; } .hero { overflow:hidden; } .hero-kicker { grid-template-columns:1fr; } .hero-kicker p:last-child { display:none; } h1 { font-size:clamp(3.15rem,15vw,4.5rem); line-height:.87; max-width:100%; min-width:0; } .hero-bottom { gap:2rem; grid-template-columns:minmax(0,1fr); min-width:0; } .hero-bottom>p { font-size:1rem; max-width:19rem; min-width:0; } .hero-links { flex-wrap:wrap; gap:.8rem 1.2rem; justify-self:start; min-width:0; } .capability-grid { grid-template-columns:1fr; } .capability-grid article,.capability-grid article+article { border-right:0; border-top:1px solid var(--line); padding:2rem 0; } .stack { grid-template-columns:1fr; } .credential-list>* { gap:.65rem; grid-template-columns:1fr auto; } .credential-list strong { grid-column:1/-1; grid-row:2; } .contact-links a { font-size:1.05rem; } }
+</style>

@@ -1,0 +1,37 @@
+---
+import type { Project } from '../data/portfolio';
+import ArrowLink from './ArrowLink.astro';
+import ProjectVisual from './ProjectVisual.astro';
+import StatusTag from './StatusTag.astro';
+interface Props { project: Project; index: number; }
+const { project, index } = Astro.props;
+---
+
+<article class:list={['featured-project', { reverse: index % 2 === 1 }]}>
+	<div class="project-copy">
+		<div class="project-meta"><span class="index">0{index + 1}</span><StatusTag status={project.status} /></div>
+		<h3>{project.title}</h3>
+		<p class="summary">{project.summary}</p>
+		<p class="detail">{project.detail}</p>
+		<ul aria-label={`${project.title} technologies`}>{project.stack.map((item) => <li>{item}</li>)}</ul>
+		<div class="links">{project.links.map((link) => <ArrowLink href={link.href} label={link.label} />)}</div>
+	</div>
+	{project.visual && <ProjectVisual kind={project.visual} />}
+</article>
+
+<style>
+	.featured-project { align-items:center; display:grid; gap:clamp(2.5rem,6vw,6rem); grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); padding:clamp(3.5rem,8vw,7.5rem) 0; }
+	.featured-project + .featured-project { border-top:1px solid var(--line); }
+	.featured-project.reverse { grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr); }
+	.reverse .project-copy { order:2; }
+	.project-copy { max-width:31rem; }
+	.project-meta { align-items:center; display:flex; justify-content:space-between; margin-bottom:2.6rem; }
+	.index { color:var(--muted); font-family:var(--serif); font-size:.9rem; font-style:italic; }
+	h3 { font-family:var(--serif); font-size:clamp(3rem,6vw,5.5rem); font-weight:500; letter-spacing:-.065em; line-height:.88; margin:0; }
+	.summary { font-family:var(--serif); font-size:clamp(1.25rem,2vw,1.65rem); letter-spacing:-.025em; line-height:1.28; margin:1.8rem 0 1.3rem; }
+	.detail { color:var(--muted); font-size:.92rem; line-height:1.75; margin:0 0 1.7rem; }
+	ul { display:flex; flex-wrap:wrap; gap:.75rem; list-style:none; margin:0; padding:0; }
+	li { border-bottom:1px solid var(--line-strong); color:var(--muted); font-size:.68rem; padding:.35rem 0; }
+	.links { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:2.1rem; }
+	@media (max-width:850px) { .featured-project,.featured-project.reverse { grid-template-columns:1fr; } .reverse .project-copy { order:initial; } }
+</style>

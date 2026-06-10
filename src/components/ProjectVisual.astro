@@ -1,0 +1,26 @@
+---
+interface Props { kind: 'lotto' | 'wisdom'; }
+const { kind } = Astro.props;
+---
+
+<div class:list={['project-visual', kind]} aria-hidden="true">
+	<div class="browser-bar">
+		<div class="dots"><span></span><span></span><span></span></div>
+		<span>{kind === 'lotto' ? 'lotto-hub-khaki.vercel.app' : 'spring-wisdom.onrender.com'}</span>
+	</div>
+	{kind === 'lotto' ? (
+		<img src="/images/lotto-hub.png" alt="" width="1200" height="760" loading="lazy" />
+	) : (
+		<img src="/images/spring-wisdom.png" alt="" width="1200" height="760" loading="lazy" />
+	)}
+</div>
+
+<style>
+	.project-visual { background: #e9e4d9; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(27,25,21,.08); min-height: 25rem; overflow: hidden; transform: rotate(.7deg); }
+	.project-visual.wisdom { background: #e8e1d6; transform: rotate(-.6deg); }
+	img { display:block; height:auto; min-height:25rem; object-fit:cover; object-position:center; width:100%; }
+	.browser-bar { align-items: center; background: rgba(255,255,255,.42); border-bottom: 1px solid rgba(29,27,23,.12); color: #6d675d; display: flex; font-size: .6rem; gap: 1rem; letter-spacing: .08em; padding: .72rem 1rem; text-transform: uppercase; }
+	.dots { display: flex; gap: .25rem; }
+	.dots span { background: #a7a095; border-radius: 50%; height: .33rem; width: .33rem; }
+	@media (max-width:520px) { .project-visual { min-height:21rem; } }
+</style>

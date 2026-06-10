@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f2eee5"/>
+  <path d="M0 126h1200M0 252h1200M0 378h1200M0 504h1200" stroke="#1d1b17" stroke-opacity=".06"/>
+  <path d="M240 0v630M480 0v630M720 0v630M960 0v630" stroke="#1d1b17" stroke-opacity=".04"/>
+  <circle cx="82" cy="79" r="7" fill="#a24c31"/>
+  <text x="106" y="86" fill="#6e685f" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="3">ZORNEO · PORTFOLIO</text>
+  <text x="75" y="300" fill="#1d1b17" font-family="Georgia, serif" font-size="104" letter-spacing="-6">From idea to</text>
+  <text x="75" y="405" fill="#a24c31" font-family="Georgia, serif" font-size="112" font-style="italic" letter-spacing="-6">reliable software.</text>
+  <text x="78" y="548" fill="#6e685f" font-family="Arial, sans-serif" font-size="20" letter-spacing="2">PRODUCT-FOCUSED FULL-STACK DEVELOPER · UTC+7</text>
+</svg>
