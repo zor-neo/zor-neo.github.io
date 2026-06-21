@@ -1,4 +1,4 @@
-export type ProjectStatus = 'Live' | 'Featured prototype' | 'Ongoing concept' | 'Tool' | 'Analysis';
+export type ProjectStatus = 'Live' | 'Cloud case study' | 'Featured prototype' | 'Ongoing concept' | 'Tool' | 'Analysis';
 
 export interface ProjectLink {
 	label: string;
@@ -12,10 +12,23 @@ export interface Project {
 	detail: string;
 	stack: string[];
 	links: ProjectLink[];
-	visual?: 'lotto' | 'wisdom';
+	visual?: 'lotto' | 'wisdom' | 'cloudtask';
 }
 
 export const featuredProjects: Project[] = [
+	{
+		title: 'CloudTask',
+		status: 'Cloud case study',
+		summary: 'A serverless AWS task manager built to showcase secure cloud architecture.',
+		detail:
+			'Combines a React dashboard with Cognito authentication, API Gateway JWT authorization, Python Lambda APIs, DynamoDB user-scoped records, private S3 uploads, CloudFront delivery, and Terraform infrastructure as code.',
+		stack: ['AWS', 'Terraform', 'React', 'Lambda', 'DynamoDB', 'S3', 'CloudFront'],
+		links: [
+			{ label: 'View repository', href: 'https://github.com/zor-neo/aws_portfolio_1' },
+			{ label: 'Read case study', href: 'https://github.com/zor-neo/aws_portfolio_1/blob/main/docs/portfolio-case-study.md' },
+		],
+		visual: 'cloudtask',
+	},
 	{
 		title: 'Lotto Hub',
 		status: 'Live',
@@ -121,7 +134,7 @@ export const capabilities = [
 	{
 		number: '03',
 		title: 'Cloud foundations',
-		text: 'AWS-certified cloud fundamentals with an active path toward solution architecture and reliable delivery.',
+		text: 'AWS-certified cloud fundamentals backed by a serverless portfolio project using Terraform, Cognito, API Gateway, Lambda, DynamoDB, S3, and CloudFront.',
 	},
 	{
 		number: '04',
@@ -130,4 +143,4 @@ export const capabilities = [
 	},
 ];
 
-export const coreStack = ['Python', 'JavaScript', 'TypeScript', 'Astro', 'Django', 'APIs', 'AWS', 'Docker', 'Data analysis', 'PHP'];
+export const coreStack = ['Python', 'JavaScript', 'TypeScript', 'Astro', 'Django', 'APIs', 'AWS', 'Terraform', 'Docker', 'Data analysis', 'PHP'];

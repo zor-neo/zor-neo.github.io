@@ -1,18 +1,29 @@
 ---
-interface Props { kind: 'lotto' | 'wisdom'; }
+interface Props { kind: 'lotto' | 'wisdom' | 'cloudtask'; }
 const { kind } = Astro.props;
+
+const projectMeta = {
+	lotto: {
+		url: 'lotto-hub-khaki.vercel.app',
+		src: '/images/lotto-hub.png',
+	},
+	wisdom: {
+		url: 'spring-wisdom.onrender.com',
+		src: '/images/spring-wisdom.png',
+	},
+	cloudtask: {
+		url: 'github.com/zor-neo/aws_portfolio_1',
+		src: '/images/cloudtask-dashboard.png',
+	},
+}[kind];
 ---
 
 <div class:list={['project-visual', kind]} aria-hidden="true">
 	<div class="browser-bar">
 		<div class="dots"><span></span><span></span><span></span></div>
-		<span>{kind === 'lotto' ? 'lotto-hub-khaki.vercel.app' : 'spring-wisdom.onrender.com'}</span>
+		<span>{projectMeta.url}</span>
 	</div>
-	{kind === 'lotto' ? (
-		<img src="/images/lotto-hub.png" alt="" width="1200" height="760" loading="lazy" />
-	) : (
-		<img src="/images/spring-wisdom.png" alt="" width="1200" height="760" loading="lazy" />
-	)}
+	<img src={projectMeta.src} alt="" width="1200" height="760" loading="lazy" />
 </div>
 
 <style>
@@ -26,6 +37,7 @@ const { kind } = Astro.props;
 		width: 100%;
 	}
 	.project-visual.wisdom { background: #e8e1d6; transform: rotate(0deg); }
+	.project-visual.cloudtask { background: #f6f7f3; }
 	img { display:block; height:auto; min-height:25rem; object-fit:cover; object-position:center; width:100%; }
 	.browser-bar { align-items: center; background: rgba(255,255,255,.42); border-bottom: 1px solid rgba(29,27,23,.12); color: #6d675d; display: flex; font-size: .6rem; gap: 1rem; letter-spacing: .08em; padding: .72rem 1rem; text-transform: uppercase; }
 	.dots { display: flex; gap: .25rem; }

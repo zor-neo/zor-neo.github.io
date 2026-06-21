@@ -5,7 +5,7 @@ import RepositoryCard from '../components/RepositoryCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { capabilities, coreStack, featuredProjects, repositoryProjects } from '../data/portfolio';
 const title = 'Zorneo — Product-focused full-stack developer';
-const description = 'Zorneo builds practical, reliable software products across full-stack web development, applied AI, and cloud.';
+const description = 'Zorneo builds practical, reliable software products across full-stack web development, applied AI, and cloud architecture.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -24,8 +24,8 @@ const description = 'Zorneo builds practical, reliable software products across 
 			</div>
 		</section>
 		<section class="selected-work container" id="work">
-			<h2 class="sr-only">Selected live work</h2>
-			<div class="section-heading"><p class="section-label">Selected live work</p><p>Products in the world, available to explore.</p></div>
+			<h2 class="sr-only">Selected work</h2>
+			<div class="section-heading"><p class="section-label">Selected work</p><p>Products, systems, and cloud builds available to explore.</p></div>
 			<div>{featuredProjects.map((project,index) => <FeaturedProject project={project} index={index} />)}</div>
 		</section>
 		<section class="repository-work">
