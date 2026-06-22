@@ -24,6 +24,7 @@ export const featuredProjects: Project[] = [
 			'Combines a React dashboard with Cognito authentication, API Gateway JWT authorization, Python Lambda APIs, DynamoDB user-scoped records, private S3 uploads, CloudFront delivery, and Terraform infrastructure as code.',
 		stack: ['AWS', 'Terraform', 'React', 'Lambda', 'DynamoDB', 'S3', 'CloudFront'],
 		links: [
+			{ label: 'Visit live product', href: 'https://d1d9s4718q927i.cloudfront.net' },
 			{ label: 'View repository', href: 'https://github.com/zor-neo/aws_portfolio_1' },
 			{ label: 'Read case study', href: 'https://github.com/zor-neo/aws_portfolio_1/blob/main/docs/portfolio-case-study.md' },
 		],
