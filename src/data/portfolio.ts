@@ -12,7 +12,7 @@ export interface Project {
 	detail: string;
 	stack: string[];
 	links: ProjectLink[];
-	visual?: 'lotto' | 'wisdom' | 'cloudtask';
+	visual?: 'lotto' | 'wisdom' | 'cloudtask' | 'lottery-api';
 }
 
 export const featuredProjects: Project[] = [
@@ -29,6 +29,20 @@ export const featuredProjects: Project[] = [
 			{ label: 'Read case study', href: 'https://github.com/zor-neo/aws_portfolio_1/blob/main/docs/portfolio-case-study.md' },
 		],
 		visual: 'cloudtask',
+	},
+	{
+		title: 'Thai Lottery Results API',
+		status: 'Live',
+		summary: 'A Cloudflare-native API that turns live Thai lottery sources into dependable, auditable result data.',
+		detail:
+			'Runs scheduled and on-demand ingestion at the edge, verifies results across multiple providers, detects conflicts, and stores revision history in Neon Postgres. Authenticated REST endpoints, audit trails, webhook delivery, and a developer console give consuming applications a resilient integration surface.',
+		stack: ['Cloudflare Workers', 'TypeScript', 'Neon Postgres', 'Cron Triggers', 'REST API', 'Webhooks'],
+		links: [
+			{ label: 'Explore live API', href: 'https://lottery-api-cloudflare.zorthiha-neo.workers.dev' },
+			{ label: 'Open developer console', href: 'https://lottery-api-cloudflare.zorthiha-neo.workers.dev/console' },
+			{ label: 'View repository', href: 'https://github.com/zor-neo/LotteryApi' },
+		],
+		visual: 'lottery-api',
 	},
 	{
 		title: 'Lotto Hub',
@@ -134,8 +148,8 @@ export const capabilities = [
 	},
 	{
 		number: '03',
-		title: 'Cloud foundations',
-		text: 'AWS-certified cloud fundamentals backed by a serverless portfolio project using Terraform, Cognito, API Gateway, Lambda, DynamoDB, S3, and CloudFront.',
+		title: 'Cloud architecture',
+		text: 'AWS Certified Solutions Architect — Associate knowledge applied across serverless AWS systems and Cloudflare edge services, with infrastructure as code, secure APIs, managed data, and resilient delivery.',
 	},
 	{
 		number: '04',
@@ -144,4 +158,4 @@ export const capabilities = [
 	},
 ];
 
-export const coreStack = ['Python', 'JavaScript', 'TypeScript', 'Astro', 'Django', 'APIs', 'AWS', 'Terraform', 'Docker', 'Data analysis', 'PHP'];
+export const coreStack = ['Python', 'JavaScript', 'TypeScript', 'Astro', 'Django', 'APIs', 'AWS', 'Cloudflare Workers', 'Terraform', 'PostgreSQL', 'Docker', 'Data analysis', 'PHP'];

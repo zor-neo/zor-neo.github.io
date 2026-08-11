@@ -1,5 +1,5 @@
 ---
-interface Props { kind: 'lotto' | 'wisdom' | 'cloudtask'; }
+interface Props { kind: 'lotto' | 'wisdom' | 'cloudtask' | 'lottery-api'; }
 const { kind } = Astro.props;
 
 const projectMeta = {
@@ -15,6 +15,10 @@ const projectMeta = {
 		url: 'github.com/zor-neo/aws_portfolio_1',
 		src: '/images/cloudtask-dashboard.png',
 	},
+	'lottery-api': {
+		url: 'lottery-api-cloudflare.zorthiha-neo.workers.dev',
+		src: null,
+	},
 }[kind];
 ---
 
@@ -23,7 +27,23 @@ const projectMeta = {
 		<div class="dots"><span></span><span></span><span></span></div>
 		<span>{projectMeta.url}</span>
 	</div>
-	<img src={projectMeta.src} alt="" width="1200" height="760" loading="lazy" />
+	{projectMeta.src ? (
+		<img src={projectMeta.src} alt="" width="1200" height="760" loading="lazy" />
+	) : (
+		<div class="api-console">
+			<div class="console-heading"><span>Lottery Results API</span><span class="live"><i></i>Live</span></div>
+			<div class="endpoint"><span class="method">GET</span><code>/v1/results/latest</code><span class="success">200 OK</span></div>
+			<pre><code><span class="punctuation">{'{'}</span>
+  <span class="key">"draw_date"</span>: <span class="value">"2026-08-01"</span>,
+  <span class="key">"status"</span>: <span class="value">"confirmed"</span>,
+  <span class="key">"revision"</span>: <span class="number">12</span>,
+  <span class="key">"sources_verified"</span>: <span class="number">3</span>,
+  <span class="key">"conflicts"</span>: <span class="number">0</span>,
+  <span class="key">"delivery"</span>: <span class="value">"edge"</span>
+<span class="punctuation">{'}'}</span></code></pre>
+			<div class="console-footer"><span>Cloudflare Workers</span><span>Neon Postgres</span><span>Multi-source verification</span></div>
+		</div>
+	)}
 </div>
 
 <style>
@@ -38,9 +58,22 @@ const projectMeta = {
 	}
 	.project-visual.wisdom { background: #e8e1d6; transform: rotate(0deg); }
 	.project-visual.cloudtask { background: #f6f7f3; }
+	.project-visual.lottery-api { background:#151c1a; border-color:rgba(29,27,23,.3); }
 	img { display:block; height:auto; min-height:25rem; object-fit:cover; object-position:center; width:100%; }
 	.browser-bar { align-items: center; background: rgba(255,255,255,.42); border-bottom: 1px solid rgba(29,27,23,.12); color: #6d675d; display: flex; font-size: .6rem; gap: 1rem; letter-spacing: .08em; padding: .72rem 1rem; text-transform: uppercase; }
 	.dots { display: flex; gap: .25rem; }
 	.dots span { background: #a7a095; border-radius: 50%; height: .33rem; width: .33rem; }
+	.lottery-api .browser-bar { background:#202825; border-color:rgba(255,255,255,.08); color:#9daaa4; }
+	.api-console { color:#dce5e1; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; padding:clamp(1.2rem,3vw,2.4rem); }
+	.console-heading { align-items:center; display:flex; font-size:.7rem; justify-content:space-between; letter-spacing:.08em; text-transform:uppercase; }
+	.live { align-items:center; color:#8dc6a8; display:flex; gap:.45rem; }
+	.live i { background:#62c08b; border-radius:50%; box-shadow:0 0 0 4px rgba(98,192,139,.12); height:.42rem; width:.42rem; }
+	.endpoint { align-items:center; border:1px solid rgba(255,255,255,.1); display:grid; gap:.8rem; grid-template-columns:auto 1fr auto; margin:1.8rem 0 0; padding:.85rem 1rem; }
+	.endpoint code { color:#dce5e1; font-size:clamp(.62rem,1.4vw,.78rem); overflow:hidden; text-overflow:ellipsis; }
+	.method,.success { font-size:.58rem; font-weight:700; letter-spacing:.08em; }
+	.method { color:#79c99d; } .success { color:#8dc6a8; }
+	pre { background:#101513; border:1px solid rgba(255,255,255,.08); font-size:clamp(.62rem,1.35vw,.8rem); line-height:1.8; margin:0; min-height:14rem; overflow:auto; padding:1.4rem; }
+	.key { color:#8ec6d2; } .value { color:#d7b985; } .number { color:#c69bd5; } .punctuation { color:#9daaa4; }
+	.console-footer { color:#78867f; display:flex; flex-wrap:wrap; font-size:.53rem; gap:.6rem 1.2rem; letter-spacing:.06em; padding-top:1.2rem; text-transform:uppercase; }
 	@media (max-width:520px) { .project-visual { min-height:21rem; } }
 </style>
