@@ -1,6 +1,6 @@
 # Zorneo Portfolio
 
-Editorial portfolio for Zorneo, a product-focused full-stack developer.
+Editorial portfolio for Zorneo, an independent IT solutions developer.
 
 ## Commands
 

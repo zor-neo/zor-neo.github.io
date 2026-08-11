@@ -4,8 +4,8 @@ import FeaturedProject from '../components/FeaturedProject.astro';
 import RepositoryCard from '../components/RepositoryCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { capabilities, coreStack, featuredProjects, repositoryProjects } from '../data/portfolio';
-const title = 'Zorneo — Product-focused full-stack developer';
-const description = 'Zorneo builds practical, reliable software products across full-stack web development, applied AI, and cloud architecture.';
+const title = 'Zorneo — Independent IT Solutions Developer';
+const description = 'Zorneo independently designs and builds practical, reliable IT solutions across full-stack development, cloud architecture, and applied automation.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -16,11 +16,11 @@ const description = 'Zorneo builds practical, reliable software products across 
 	</header>
 	<main id="main">
 		<section class="hero container" id="top">
-			<div class="hero-kicker"><p>Product-focused<br />full-stack developer</p><p>Based in UTC+7<br />Working worldwide</p></div>
+			<div class="hero-kicker"><p>Independent IT<br />Solutions Developer</p><p>Based in UTC+7<br />Working worldwide</p></div>
 			<h1>From idea to<br /><em>reliable</em> software.</h1>
 			<div class="hero-bottom">
-				<p>I build practical digital products around real-world problems, with attention to how they work, how they feel, and how they hold up.</p>
-				<div class="hero-links"><ArrowLink href="#work" label="Explore selected work" /><ArrowLink href="https://github.com/zor-neo" label="GitHub profile" /></div>
+				<p>I independently turn real-world problems into practical digital products, with attention to how they work, how they feel, and how they hold up.</p>
+				<div class="hero-links"><ArrowLink href="#work" label="Explore selected work" /><ArrowLink href="https://github.com/zor-neo" label="GitHub profile" /><ArrowLink href="https://www.linkedin.com/in/zor-neo/" label="LinkedIn profile" /></div>
 			</div>
 		</section>
 		<section class="selected-work container" id="work">
@@ -45,23 +45,24 @@ const description = 'Zorneo builds practical, reliable software products across 
 			<div class="capability-grid">{capabilities.map((capability) => <article><span>{capability.number}</span><h3>{capability.title}</h3><p>{capability.text}</p></article>)}</div>
 			<div class="stack"><p>Working stack</p><ul aria-label="Working technology stack">{coreStack.map((item,index) => <li class:list={{secondary:index===coreStack.length-1}}>{item}</li>)}</ul></div>
 		</section>
-		<section class="credentials">
+		<section class="credentials" id="credentials">
 			<div class="container">
-				<div class="credentials-intro"><p class="section-label">Cloud credentials</p><h2>Building a stronger<br /><em>systems view.</em></h2></div>
+				<div class="credentials-intro"><p class="section-label">Credentials & development</p><h2>Building a stronger<br /><em>systems view.</em></h2></div>
 				<div class="credential-list">
-					<a href="https://www.credly.com/badges/9a7bc559-d83a-4d20-af21-f6e35f699a57/public_url" target="_blank" rel="noreferrer"><span class="credential-status">Certified · AWS</span><strong>AWS Certified Cloud Practitioner</strong><span class="credential-arrow" aria-hidden="true">↗</span></a>
+					<div><span class="credential-status">Completed · Education</span><strong>Diploma in Computer Science</strong><span class="study-mark">Completed</span></div>
 					<a href="https://www.credly.com/badges/086a149b-3409-44e5-9467-a68855e8fa58/public_url" target="_blank" rel="noreferrer"><span class="credential-status">Certified · AWS</span><strong>AWS Certified Solutions Architect — Associate</strong><span class="credential-arrow" aria-hidden="true">↗</span></a>
-					<div><span class="credential-status">Currently studying</span><strong>Diploma in Computer Science</strong><span class="study-mark">Completing soon</span></div>
+					<a href="https://www.credly.com/badges/9a7bc559-d83a-4d20-af21-f6e35f699a57/public_url" target="_blank" rel="noreferrer"><span class="credential-status">Certified · AWS</span><strong>AWS Certified Cloud Practitioner</strong><span class="credential-arrow" aria-hidden="true">↗</span></a>
+					<div><span class="credential-status">Currently preparing · AWS</span><strong>AWS Certified CloudOps Engineer — Associate</strong><span class="study-mark">SOA-C03</span></div>
 				</div>
 			</div>
 		</section>
 		<section class="contact container" id="contact">
 			<p class="section-label">Contact</p><h2>Have a useful problem?<br /><em>Let’s talk.</em></h2>
-			<p class="contact-copy">I’m open to remote full-stack opportunities and conversations about practical software, AI-assisted products, and the systems behind them.</p>
-			<div class="contact-links"><a href="mailto:zorthiha.neo@gmail.com">zorthiha.neo@gmail.com <span aria-hidden="true">↗</span></a><a href="https://github.com/zor-neo" target="_blank" rel="noreferrer">github.com/zor-neo <span aria-hidden="true">↗</span></a></div>
+			<p class="contact-copy">I’m open to remote opportunities and conversations about practical IT solutions, cloud systems, AI-assisted products, and the engineering behind them.</p>
+			<div class="contact-links"><a href="mailto:zorthiha.neo@gmail.com">zorthiha.neo@gmail.com <span aria-hidden="true">↗</span></a><a href="https://github.com/zor-neo" target="_blank" rel="noreferrer">github.com/zor-neo <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/zor-neo/" target="_blank" rel="noreferrer">linkedin.com/in/zor-neo <span aria-hidden="true">↗</span></a></div>
 		</section>
 	</main>
-	<footer class="container"><a class="wordmark" href="#top">Zorneo<span>.</span></a><p>Product-focused full-stack developer · UTC+7</p><p>Designed and built with intent.</p></footer>
+	<footer class="container"><a class="wordmark" href="#top">Zorneo<span>.</span></a><p>Independent IT Solutions Developer · UTC+7</p><p>Designed and built with intent.</p></footer>
 </BaseLayout>
 
 <style>
@@ -82,7 +83,7 @@ const description = 'Zorneo builds practical, reliable software products across 
 	h1 em,h2 em { font-weight:400; }
 	.hero-bottom { align-items:end; align-self:end; }
 	.hero-bottom>p { font-family:var(--serif); font-size:clamp(1.12rem,2vw,1.45rem); letter-spacing:-.025em; line-height:1.42; margin:0; max-width:28rem; }
-	.hero-links { display:flex; gap:1.7rem; justify-self:end; }
+	.hero-links { display:flex; flex-wrap:wrap; gap:1.7rem; justify-content:flex-end; justify-self:end; }
 	.selected-work { border-top:1px solid var(--line); padding-top:clamp(3rem,7vw,6rem); }
 	.section-heading { align-items:start; display:grid; gap:2rem; grid-template-columns:1fr 1fr; }
 	.section-heading>p { color:var(--muted); font-family:var(--serif); font-size:1rem; font-style:italic; justify-self:end; margin:0; max-width:19rem; }
@@ -124,5 +125,5 @@ const description = 'Zorneo builds practical, reliable software products across 
 	footer { align-items:center; border-top:1px solid var(--line); color:var(--muted); display:grid; font-size:.62rem; grid-template-columns:1fr auto 1fr; letter-spacing:.06em; min-height:6rem; }
 	footer p:last-child { justify-self:end; }
 	@media (max-width:850px) { .site-header { grid-template-columns:1fr auto; } nav { display:none; } .hero { min-height:43rem; } .section-heading,.credentials .container { grid-template-columns:1fr; } .section-heading>p { justify-self:start; } .capability-grid { grid-template-columns:repeat(2,1fr); } .capability-grid article:nth-child(2) { border-right:0; } .capability-grid article:nth-child(3),.capability-grid article:nth-child(4) { border-top:1px solid var(--line); } footer { gap:.6rem; grid-template-columns:1fr auto; padding-bottom:1.5rem; padding-top:1.5rem; } footer p:first-of-type { display:none; } }
-	@media (max-width:590px) { .availability { font-size:0; } .hero { overflow:hidden; } .hero-kicker { grid-template-columns:1fr; } .hero-kicker p:last-child { display:none; } h1 { font-size:clamp(3.15rem,15vw,4.5rem); line-height:.87; max-width:100%; min-width:0; } .hero-bottom { gap:2rem; grid-template-columns:minmax(0,1fr); min-width:0; } .hero-bottom>p { font-size:1rem; max-width:19rem; min-width:0; } .hero-links { flex-wrap:wrap; gap:.8rem 1.2rem; justify-self:start; min-width:0; } .capability-grid { grid-template-columns:1fr; } .capability-grid article,.capability-grid article+article { border-right:0; border-top:1px solid var(--line); padding:2rem 0; } .stack { grid-template-columns:1fr; } .credential-list>* { gap:.65rem; grid-template-columns:1fr auto; } .credential-list strong { grid-column:1/-1; grid-row:2; } .contact-links a { font-size:1.05rem; } }
+	@media (max-width:590px) { .availability { font-size:0; } .hero { overflow:hidden; } .hero-kicker { grid-template-columns:1fr; } .hero-kicker p:last-child { display:none; } h1 { font-size:clamp(3.15rem,15vw,4.5rem); line-height:.87; max-width:100%; min-width:0; } .hero-bottom { gap:2rem; grid-template-columns:minmax(0,1fr); min-width:0; } .hero-bottom>p { font-size:1rem; max-width:19rem; min-width:0; } .hero-links { flex-wrap:wrap; gap:.8rem 1.2rem; justify-content:flex-start; justify-self:stretch; min-width:0; width:100%; } .capability-grid { grid-template-columns:1fr; } .capability-grid article,.capability-grid article+article { border-right:0; border-top:1px solid var(--line); padding:2rem 0; } .stack { grid-template-columns:1fr; } .credential-list>* { gap:.65rem; grid-template-columns:1fr auto; } .credential-list strong { grid-column:1/-1; grid-row:2; } .contact-links a { font-size:1.05rem; } }
 </style>
